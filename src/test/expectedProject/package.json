@@ -1,0 +1,30 @@
+{
+  "description": "Any description",
+  "homepage": "https://project_website",
+  "license": "MIT",
+  "author": {
+    "name": "Yogi the Bear",
+    "email": "yogi@yellowstone.park",
+    "url": "https://yellowstone.park/yogi"
+  },
+  "repository": "yellowstone/yogi",
+  "scripts": {
+    "clean": "rimraf dist src/styles/theme.css",
+    "clean:all": "yarn clean && rimraf node_modules",
+    "build": "yarn build:css && yarn build:pdf && yarn build:html",
+    "build:css": "sass src/styles/theme.scss src/styles/theme.css --no-source-map",
+    "build:pdf": "marp src/slides.md --html -o dist/pdf/slides.pdf --theme src/styles/theme.css --allow-local-files --pdf",
+    "build:html": "marp src/slides.md --html -o dist/html/slides.html --theme src/styles/theme.css --allow-local-files",
+    "watch": "yarn build -w"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^2.2.0",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=19.3.0"
+  },
+  "private": true
+}

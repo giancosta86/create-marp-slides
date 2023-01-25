@@ -1,0 +1,76 @@
+{
+  "name": "@giancosta86/create-marp-slides",
+  "version": "1.0-alpha.2",
+  "description": "Create Marp-based slides from elegant source files",
+  "keywords": [
+    "Marp",
+    "slides",
+    "project",
+    "generator"
+  ],
+  "homepage": "https://github.com/giancosta86/create-marp-slides#readme",
+  "bugs": "https://github.com/giancosta86/create-marp-slides/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Gianluca Costa",
+    "email": "gianluca@gianlucacosta.info",
+    "url": "https://gianlucacosta.info/"
+  },
+  "files": [],
+  "main": "dist",
+  "types": "dist",
+  "bin": "dist/app/main.js",
+  "repository": "giancosta86/create-marp-slides",
+  "scripts": {
+    "clean": "rimraf dist coverage giancosta86-*.tgz",
+    "clean:all": "yarn clean && rimraf node_modules",
+    "format": "prettier --write .",
+    "start": "ts-node src/app/main.ts",
+    "check-all": "yarn check-format && yarn lint && yarn test",
+    "check-format": "prettier --check .",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx,.cjs,.mjs",
+    "test": "cross-env NODE_OPTIONS=\"-r ts-node/register --no-warnings\" jest",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage",
+    "build": "yarn compile-ts && yarn copy-static",
+    "compile-ts": "tsc",
+    "copy-static": "yarn copy-archetype && yarn copy-expected-project",
+    "copy-archetype": "copyfiles -a -u 1 \"src/project/archetype/**/*\" dist/",
+    "copy-expected-project": "copyfiles -a -u 1 \"src/test/expectedProject/**/*\" dist/",
+    "prepack": "yarn check-all && yarn build && yarn test:prod",
+    "watch": "yarn compile-ts --watch",
+    "test:prod": "jest dist --testPathIgnorePatterns=/_.+"
+  },
+  "dependencies": {
+    "immutable": "^4.2.2",
+    "inquirer": "^8",
+    "recursive-copy": "^2.0.14",
+    "replace-in-file": "^6.3.5"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.2.218",
+    "@swc/jest": "^0.2.22",
+    "@types/inquirer": "^8",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^16",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.18.0",
+    "jest": "^28.1.3",
+    "jest-extended": "^3.2.3",
+    "prettier": "^2.7.1",
+    "rimraf": "^4.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4",
+    "uuid": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=16.19.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

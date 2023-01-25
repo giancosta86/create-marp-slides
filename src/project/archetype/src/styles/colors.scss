@@ -1,0 +1,26 @@
+:root {
+  .green *,
+  &.green * {
+    color: #108b0b !important;
+  }
+
+  .blue *,
+  &.blue * {
+    color: #156da8 !important;
+  }
+
+  .red *,
+  &.red * {
+    color: #950036 !important;
+  }
+
+  .orange *,
+  &.orange * {
+    color: #cb6d00 !important;
+  }
+
+  .violet *,
+  &.violet * {
+    color: #940098 !important;
+  }
+}

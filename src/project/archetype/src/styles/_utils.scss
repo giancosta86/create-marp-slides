@@ -1,0 +1,11 @@
+@mixin page-numbers {
+  &:after {
+    @content;
+  }
+}
+
+@mixin no-page-numbers {
+  @include page-numbers {
+    display: none;
+  }
+}
