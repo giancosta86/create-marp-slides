@@ -11,14 +11,19 @@
   "scripts": {
     "clean": "rimraf dist src/styles/theme.css",
     "clean:all": "yarn clean && rimraf node_modules",
-    "build": "yarn build:css && yarn build:pdf && yarn build:html",
+    "format": "prettier --write .",
+    "build": "yarn build:css && yarn build:slides",
     "build:css": "sass src/styles/theme.scss src/styles/theme.css --no-source-map",
-    "build:pdf": "marp src/slides.md --html -o dist/pdf/slides.pdf --theme src/styles/theme.css --allow-local-files --pdf",
-    "build:html": "marp src/slides.md --html -o dist/html/slides.html --theme src/styles/theme.css --allow-local-files",
-    "watch": "yarn build -w"
+    "build:slides": "concurrently -r 'yarn build:pdf' 'yarn build:html'",
+    "build:pdf": "marp src/slides.md -c marp.pdf.json",
+    "build:html": "concurrently -r 'yarn create-slides:html' 'yarn copy-images:html'",
+    "create-slides:html": "marp src/slides.md -c marp.html.json",
+    "copy-images:html": "copyfiles -u 1 src/**/*.{png,jpg,jpeg} dist/html"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^2.2.0",
+    "concurrently": "^7.6.0",
+    "copyfiles": "^2.4.1",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
     "sass": "^1.56.1"

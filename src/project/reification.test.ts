@@ -55,6 +55,9 @@ describe("Archetype reification", () => {
     it("should prepare the Prettier settings file", () =>
       tempProject.checkTextFiles(List([".prettierrc"])));
 
+    it("should prepare the Marp configuration files", () =>
+      tempProject.checkTextFiles(List(["marp.pdf.json", "marp.html.json"])));
+
     it("should prepare the LICENSE file", () =>
       tempProject.checkTextFiles(List(["LICENSE"])));
 
