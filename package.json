@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/create-marp-slides",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0",
   "description": "Create Marp-based slides from elegant source files",
   "keywords": [
     "Marp",
