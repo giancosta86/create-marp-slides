@@ -17,3 +17,7 @@ To create your own project, please run:
 The directory is optional - if omitted, the current working directory will be used, _potentially overwriting but never deleting_ existing files.
 
 Please, refer to the generated README file for further details.
+
+## Further references
+
+- [Platonic](https://github.com/giancosta86/platonic) - EJS-based directory reification engine

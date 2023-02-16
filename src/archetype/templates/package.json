@@ -1,0 +1,40 @@
+{
+  "description": "<%- slides.description %>",
+  "keywords": [
+  <%- slides.keywords.map(keyword => `  "${keyword}"`).join(",\n  ") %>
+  ],
+  "homepage": "<%- slides.website %>",
+  "license": "MIT",
+  "author": {
+    "name": "<%- author.name %>",
+    "email": "<%- author.email %>",
+    "url": "<%- author.website %>"
+  },
+  "repository": "<%- slides.repository %>",
+  "scripts": {
+    "clean": "rimraf dist src/styles/theme.css",
+    "clean:all": "yarn clean && rimraf node_modules",
+    "format": "prettier --write .",
+    "build": "yarn build:css && yarn build-slides",
+    "build:css": "sass src/styles/theme.scss src/styles/theme.css --no-source-map",
+    "build-slides": "concurrently -r \"yarn build-slides:pdf\" \"yarn build-slides:html\"",
+    "build-slides:pdf": "marp src/slides.md -c marp.pdf.json",
+    "build-slides:html": "concurrently -r \"yarn build-html-file\" \"yarn copy-html-images\"",
+    "build-html-file": "marp src/slides.md -c marp.html.json",
+    "copy-html-images": "copyfiles -u 1 src/**/*.{png,jpg,jpeg} dist/html",
+    "watch": "chokidar \"src/**/*.{md,scss,png,jpg,jpeg}\" --initial -d -c \"yarn build\""
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^2.3.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^7.6.0",
+    "copyfiles": "^2.4.1",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=<%- nodeVersion %>"
+  },
+  "private": true
+}

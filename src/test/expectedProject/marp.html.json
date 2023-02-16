@@ -1,7 +1,0 @@
-{
-  "output": "dist/html/slides.html",
-  "html": true,
-  "theme": "src/styles/theme.css",
-  "allowLocalFiles": true,
-  "progress": false
-}

@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
 import { argv, cwd } from "node:process";
+import { join } from "node:path";
 import { opendir } from "node:fs/promises";
 import { List } from "immutable";
 import inquirer from "inquirer";
-import { createMetadataQuestions } from "./questions";
+import { Archetype } from "@giancosta86/platonic";
 import { Metadata } from "../metadata";
-import { Project } from "../project";
+import { createMetadataQuestions } from "./questions";
 
 async function main(args: List<string>): Promise<void> {
-  const projectRootPath = await getProjectRootPath(args);
-  const project = new Project(projectRootPath);
+  const projectDirectory = await getProjectPath(args);
 
-  console.info("Project root directory →", project.rootDirectoryPath);
+  console.info("Project directory →", projectDirectory);
 
   const metadataQuestions = createMetadataQuestions();
 
@@ -20,16 +20,23 @@ async function main(args: List<string>): Promise<void> {
     metadataQuestions
   )) as Metadata;
 
-  return project.reify(metadata);
+  const archetypeDirectory = join(__dirname, "..", "archetype");
+
+  const archetype = new Archetype({ sourceDirectory: archetypeDirectory });
+
+  return archetype.reify({
+    targetDirectory: projectDirectory,
+    metadata
+  });
 }
 
-async function getProjectRootPath(args: List<string>): Promise<string> {
-  const projectRootPath = args.get(0) ?? cwd();
+async function getProjectPath(args: List<string>): Promise<string> {
+  const projectPath = args.get(0) ?? cwd();
 
   try {
-    await opendir(projectRootPath);
+    await opendir(projectPath);
   } catch {
-    return projectRootPath;
+    return projectPath;
   }
 
   const { canContinue } = await inquirer.prompt([
@@ -46,7 +53,7 @@ async function getProjectRootPath(args: List<string>): Promise<string> {
     throw new Error("Process interrupted by user");
   }
 
-  return projectRootPath;
+  return projectPath;
 }
 
 main(List(argv).skip(2))

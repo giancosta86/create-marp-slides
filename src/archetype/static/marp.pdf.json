@@ -5,5 +5,5 @@
   "theme": "src/styles/theme.css",
   "allowLocalFiles": true,
   "progress": false,
-  "pdfOutlines": true
+  "pdfOutlines": false
 }
