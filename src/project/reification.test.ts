@@ -13,6 +13,7 @@ const testMetadata: Metadata = {
     title: "Example Project",
     subtitle: "Some subtitle",
     description: "Any description",
+    keywords: List(["Alpha", "Beta", "Gamma"]),
     website: "https://project_website",
     repository: "yellowstone/yogi",
     copyrightYears: "2023"

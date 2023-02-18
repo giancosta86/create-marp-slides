@@ -1,10 +1,12 @@
-import { mkdir } from "node:fs/promises";
+import { promisify } from "node:util";
+import { mkdir, writeFile, unlink } from "node:fs/promises";
 import { join } from "node:path";
-import { replaceInFile, ReplaceInFileConfig } from "replace-in-file";
 import recursiveCopy from "recursive-copy";
-import { TemplateVariables } from "../templating";
+import { glob as _glob } from "glob";
+import { renderFile } from "ejs";
 import { Metadata } from "../metadata";
-import { unzip } from "../utils";
+
+const glob = promisify(_glob);
 
 export async function reifyArchetype(
   projectRootPath: string,
@@ -36,30 +38,22 @@ async function injectMetadata(
   projectRootPath: string,
   metadata: Metadata
 ): Promise<void> {
-  const projectFilesGlob = join(projectRootPath, "**", "*");
+  const templatesGlob = join(projectRootPath, "**", "*.template*");
 
-  const templateVariables = new TemplateVariables()
-    .with("AUTHOR_NAME", metadata.author.name)
-    .with("AUTHOR_EMAIL", metadata.author.email)
-    .with("AUTHOR_WEBSITE", metadata.author.website)
-    .with("SLIDES_TITLE", metadata.slides.title)
-    .with("SLIDES_SUBTITLE", metadata.slides.subtitle)
-    .with("SLIDES_DESCRIPTION", metadata.slides.description)
-    .with("SLIDES_WEBSITE", metadata.slides.website)
-    .with("SLIDES_REPOSITORY", metadata.slides.repository)
-    .with("COPYRIGHT_YEARS", metadata.slides.copyrightYears)
-    .with("NODE_VERSION", metadata.nodeVersion);
+  const templatePaths = await glob(templatesGlob, {
+    dot: true,
+    nodir: true
+  });
 
-  const [tokens, values] = unzip(templateVariables.getTokensWithValues());
+  const parallelPromises = templatePaths.map(async templatePath => {
+    const reifiedContent = await renderFile(templatePath, metadata);
 
-  const injectionConfig: ReplaceInFileConfig = {
-    files: projectFilesGlob,
-    from: tokens.map(token => new RegExp(token, "g")).toArray(),
-    to: values.toArray(),
-    glob: {
-      dot: true
-    }
-  };
+    const outputPath = templatePath.replace(".template", "");
 
-  await replaceInFile(injectionConfig);
+    await unlink(templatePath);
+
+    return writeFile(outputPath, reifiedContent, { encoding: "utf8" });
+  });
+
+  await Promise.all(parallelPromises);
 }

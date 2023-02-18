@@ -2,6 +2,12 @@
 marp: true
 paginate: true
 theme: slides
+
+title: Example Project
+description: Any description
+keywords: Alpha,Beta,Gamma
+author: Yogi the Bear
+url: https://project_website
 ---
 
 <!-- _class: title -->

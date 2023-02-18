@@ -1,5 +1,6 @@
 import { version as nodeVersion } from "node:process";
 import { QuestionCollection } from "inquirer";
+import { List } from "immutable";
 
 export function createMetadataQuestions(): QuestionCollection {
   const now = new Date();
@@ -20,23 +21,28 @@ export function createMetadataQuestions(): QuestionCollection {
 
     {
       name: "slides.title",
-      message: "Project title:"
+      message: "Presentation title:"
     },
     {
       name: "slides.subtitle",
-      message: "Project subtitle:"
+      message: "Presentation subtitle:"
     },
     {
       name: "slides.description",
-      message: "Project description:"
+      message: "Presentation description:"
+    },
+    {
+      name: "slides.keywords",
+      message: "Comma-separated presentation keywords:",
+      filter: (input: string) => List(input.split(/\s*,\s*/))
     },
     {
       name: "slides.website",
-      message: "Project website:"
+      message: "Presentation website:"
     },
     {
       name: "slides.repository",
-      message: "Project repository (in package.json format):"
+      message: "Source-code repository (in package.json format):"
     },
 
     {

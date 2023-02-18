@@ -1,13 +1,16 @@
 {
-  "description": "%SLIDES_DESCRIPTION%",
-  "homepage": "%SLIDES_WEBSITE%",
+  "description": "<%- slides.description %>",
+  "keywords": [
+  <%- slides.keywords.map(keyword => `  "${keyword}"`).join(",\n  ") %>
+  ],
+  "homepage": "<%- slides.website %>",
   "license": "MIT",
   "author": {
-    "name": "%AUTHOR_NAME%",
-    "email": "%AUTHOR_EMAIL%",
-    "url": "%AUTHOR_WEBSITE%"
+    "name": "<%- author.name %>",
+    "email": "<%- author.email %>",
+    "url": "<%- author.website %>"
   },
-  "repository": "%SLIDES_REPOSITORY%",
+  "repository": "<%- slides.repository %>",
   "scripts": {
     "clean": "rimraf dist src/styles/theme.css",
     "clean:all": "yarn clean && rimraf node_modules",
@@ -31,7 +34,7 @@
     "sass": "^1.56.1"
   },
   "engines": {
-    "node": ">=%NODE_VERSION%"
+    "node": ">=<%- nodeVersion %>"
   },
   "private": true
 }

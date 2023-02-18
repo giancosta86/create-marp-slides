@@ -1,8 +1,8 @@
-# %SLIDES_TITLE%
+# <%- slides.title %>
 
-_%SLIDES_DESCRIPTION%_
+_<%- slides.description %>_
 
-This project contains the source files of the presentation titled [%SLIDES_TITLE%](%SLIDES_WEBSITE%) - as well as a complete set of Yarn-based scripts to handle its lifecycle.
+This project contains the source files of the presentation titled [<%- slides.title %>](<%- slides.website %>) - as well as a complete set of Yarn-based scripts to handle its lifecycle.
 
 The main source file is [src/slides.md](src/slides.md), whereas the Sass-based stylesheet reside in the [src/styles](src/styles/) directory.
 
