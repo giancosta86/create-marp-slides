@@ -3,7 +3,10 @@ module.exports = {
     "^.+\\.(t|j)sx?$": ["@swc/jest"]
   },
 
-  modulePathIgnorePatterns: ["<rootDir>/src/archetype/"],
+  modulePathIgnorePatterns: [
+    "<rootDir>/src/archetype/",
+    "<rootDir>/dist/archetype/"
+  ],
 
   testPathIgnorePatterns: ["<rootDir>/dist/", "/_.+"],
 
