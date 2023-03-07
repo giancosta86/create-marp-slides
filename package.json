@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/create-marp-slides",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0-rc.3",
   "description": "Create Marp-based slides from elegant source files",
   "keywords": [
     "Marp",
@@ -34,9 +34,8 @@
     "test:coverage": "yarn test --coverage",
     "build": "yarn compile-ts && yarn copy-static",
     "compile-ts": "tsc",
-    "copy-static": "yarn copy-archetype && yarn copy-expected-project",
-    "copy-archetype": "copyfiles -a -u 1 \"src/project/archetype/**/*\" dist/",
-    "copy-expected-project": "copyfiles -a -u 1 \"src/test/expectedProject/**/*\" dist/",
+    "copy-static": "yarn copy-archetype",
+    "copy-archetype": "copyfiles -a -u 1 \"src/archetype/**/*\" dist/",
     "prepack": "yarn check-all && yarn build && yarn test:prod",
     "watch": "yarn compile-ts --watch",
     "test:prod": "jest dist --passWithNoTests --testPathIgnorePatterns=/_.+"
