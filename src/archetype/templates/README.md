@@ -15,15 +15,6 @@ Enter the project directory and run:
 just like any other Yarn-based project.
 
 
-## Watching markdown and stylesheets
-
-To enter *watch mode*, just run:
-
-> yarn watch
-
-*Any modification* to the markdown source or to the stylesheets *will trigger a rebuild* - which is especially useful when using the **Xreader** app on Linux, because it automatically reloads the PDF document without losing the current page number 
-
-
 ## The build process
 
 To build both the PDF and the HTML slides, simply run:
@@ -31,3 +22,12 @@ To build both the PDF and the HTML slides, simply run:
 > yarn build
 
 The output will reside in the different subdirectories of [dist/](dist/).
+
+
+## Watching markdown and stylesheets
+
+To enter *watch mode*, just run:
+
+> yarn watch
+
+*Any modification* to the markdown source or to the stylesheets *will trigger a rebuild* - which is especially useful when using the `xreader` app on Linux, because it automatically reloads the PDF document without losing the current page number. 
