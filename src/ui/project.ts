@@ -6,6 +6,8 @@ import inquirer from "inquirer";
 export async function getProjectPath(args: List<string>): Promise<string> {
   const projectPath = args.get(0) ?? cwd();
 
+  console.info("Project directory →", projectPath);
+
   //If the directory does not exist, it can certainly be allocated
   try {
     await stat(projectPath);
