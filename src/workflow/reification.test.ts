@@ -1,8 +1,8 @@
 import { join } from "node:path";
 import { List } from "immutable";
 import { useVolatileTempDirectory } from "@giancosta86/more-jest-io";
-import { reifyProject } from "./reification";
 import { Metadata } from "../metadata";
+import { reifyProject } from "./reification";
 
 const testMetadata: Metadata = {
   author: {
