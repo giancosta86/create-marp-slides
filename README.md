@@ -12,7 +12,7 @@ According to such an _elegant_ project structure, the _Markdown_ source document
 
 To create your own project, please run:
 
-> npm init @giancosta86/marp-slides \[\<directory>]
+> npm init @giancosta86/marp-slides[@latest] \[\<directory>]
 
 The directory is optional:
 
