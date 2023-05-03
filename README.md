@@ -12,6 +12,10 @@ According to such an _elegant_ project structure, the _Markdown_ source document
 
 To create your own project, please run:
 
+> yarn create @giancosta86/marp-slides \[\<directory>]
+
+or
+
 > npm init @giancosta86/marp-slides[@latest] \[\<directory>]
 
 The directory is optional:
