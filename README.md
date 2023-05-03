@@ -8,13 +8,17 @@ _Create Marp-based slides from elegant source files_
 
 **create-marp-slides** is a tool for _generating an entire project structure_ in order to create the slides of a _Marp-based presentation_ - in both **PDF** and **HTML** format.
 
-In such an _elegant_ project structure, the _Markdown_ source document is decoupled from the custom, _external Sass styling theme_; furthermore, its _package.json_ includes a wide range of **script** to handle the different tasks all over its lifecycle.
+According to such an _elegant_ project structure, the _Markdown_ source document is decoupled from the custom, _external Sass styling theme_; furthermore, its _package.json_ includes a wide range of **script**'s to handle the different tasks all over its lifecycle.
 
 To create your own project, please run:
 
 > npm init @giancosta86/marp-slides \[\<directory>]
 
-The directory is optional - if omitted, the current working directory will be used, _potentially overwriting but never deleting_ existing files.
+The directory is optional:
+
+- if it does not exist, it will be created
+
+- if omitted, the current working directory will be used, _potentially overwriting but never deleting_ existing files
 
 Please, refer to the generated README file for further details.
 
