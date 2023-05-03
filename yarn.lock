@@ -365,6 +365,11 @@
     immutable "^4.2.2"
     recursive-copy "^2.0.14"
 
+"@giancosta86/typed-env@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@giancosta86/typed-env/-/typed-env-2.0.3.tgz#8f70efd51bcf0ff7e0d9dd3a438ab57dc33ef0d5"
+  integrity sha512-ARUtDtimr2KlJjy9yOfBwGj+LFOPR1clIcgnCO+50sN+mSkP+BEvJd7y+lcHvWk3+9aMmHyekOVHk62TYpEvmg==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"

@@ -18,6 +18,18 @@ The directory is optional - if omitted, the current working directory will be us
 
 Please, refer to the generated README file for further details.
 
+## Environment variable
+
+You can set a few environment variables in order to make the app provide default prompt values when creating a new project:
+
+- `CREATE_MARP_SLIDES_AUTHOR_NAME`
+
+- `CREATE_MARP_SLIDES_AUTHOR_EMAIL`
+
+- `CREATE_MARP_SLIDES_AUTHOR_WEBSITE`
+
+- `CREATE_MARP_SLIDES_NODE_VERSION`
+
 ## Further references
 
 - [Platonic](https://github.com/giancosta86/platonic) - EJS-based directory reification engine

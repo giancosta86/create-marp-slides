@@ -1,6 +1,7 @@
 import { version as nodeVersion } from "node:process";
 import { QuestionCollection } from "inquirer";
 import { List } from "immutable";
+import { getEnvString } from "@giancosta86/typed-env";
 
 export function createMetadataQuestions(): QuestionCollection {
   const now = new Date();
@@ -8,15 +9,19 @@ export function createMetadataQuestions(): QuestionCollection {
   return [
     {
       name: "author.name",
-      message: "Author name:"
+      message: "Author name:",
+      default: getEnvString("CREATE_MARP_SLIDES_AUTHOR_NAME", "") || undefined
     },
     {
       name: "author.email",
-      message: "Author e-mail:"
+      message: "Author e-mail:",
+      default: getEnvString("CREATE_MARP_SLIDES_AUTHOR_EMAIL", "") || undefined
     },
     {
       name: "author.website",
-      message: "Author website:"
+      message: "Author website:",
+      default:
+        getEnvString("CREATE_MARP_SLIDES_AUTHOR_WEBSITE", "") || undefined
     },
 
     {
@@ -54,7 +59,9 @@ export function createMetadataQuestions(): QuestionCollection {
     {
       name: "nodeVersion",
       message: "Node.js version:",
-      default: nodeVersion.slice(1)
+      default:
+        getEnvString("CREATE_MARP_SLIDES_NODE_VERSION", "") ||
+        nodeVersion.slice(1)
     }
   ];
 }

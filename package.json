@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/create-marp-slides",
-  "version": "3.0.1-rc.1",
+  "version": "3.1.0-rc.1",
   "description": "Create Marp-based slides from elegant source files",
   "keywords": [
     "Marp",
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@giancosta86/platonic": "^1.0.2",
+    "@giancosta86/typed-env": "^2.0.3",
     "immutable": "^4.3.0",
     "inquirer": "^8"
   },
