@@ -38,7 +38,7 @@
     "copy-archetype": "copyfiles -a -u 1 \"src/archetype/**/*\" dist/",
     "prepack": "yarn check-all && yarn build && yarn test:prod",
     "watch": "yarn compile-ts --watch",
-    "test:prod": "jest dist --passWithNoTests --testPathIgnorePatterns=/_.+"
+    "test:prod": "jest dist --testPathIgnorePatterns=/_.+"
   },
   "dependencies": {
     "@giancosta86/platonic": "^1.0.2",
