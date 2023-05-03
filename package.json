@@ -1,6 +1,6 @@
 {
   "name": "@giancosta86/create-marp-slides",
-  "version": "3.0.1",
+  "version": "3.0.1-rc.1",
   "description": "Create Marp-based slides from elegant source files",
   "keywords": [
     "Marp",
@@ -19,7 +19,7 @@
   "files": [],
   "main": "dist",
   "types": "dist",
-  "bin": "dist/bin/main.js",
+  "bin": "dist/bin/app.js",
   "repository": "giancosta86/create-marp-slides",
   "scripts": {
     "clean": "rimraf dist coverage giancosta86-*.tgz",
