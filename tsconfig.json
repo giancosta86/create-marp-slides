@@ -26,5 +26,9 @@
     "noPropertyAccessFromIndexSignature": true,
 
     "esModuleInterop": true
+  },
+
+  "ts-node": {
+    "swc": true
   }
 }
