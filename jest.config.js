@@ -12,7 +12,6 @@ module.exports = {
 
   setupFilesAfterEnv: [
     "jest-extended/all",
-    "@giancosta86/more-jest/dist/all",
     "@giancosta86/more-jest-io/dist/all"
   ]
 };
